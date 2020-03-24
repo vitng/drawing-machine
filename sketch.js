@@ -1,6 +1,7 @@
 let array = [];
 let backgroundColor = 200;
 
+
 function setup() {
   createCanvas(1200, 800);
   //background(backgroundColor);
@@ -10,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-
+strokeWeight (4);
   if (mouseIsPressed) {
     //change stroke color (random?)
     //stroke (map ( mouseX, 0, 600, 0, 255, true));
@@ -24,7 +25,7 @@ function draw() {
     array.push([mouseX, mouseY]);
     beginShape();
     for (let i = 0; i < array.length; i++) {
-      //--->basic drawing for (let i=0; i< array.length-1; i++){
+      //--->basic drawing use: for (let i=0; i< array.length-1; i++){
       //line (array [i][0], array[i][1], array[i+1][0], array[i+1][1]);<-----
       curveVertex(array[i][0], array[i][1])
 
@@ -41,13 +42,20 @@ function keyTyped() {
     saveCanvas('fileName', 'png');
   } else if (key === 'd') {
     // display image
-    background(255);
+    background(218, 247, 236);
     // to clear image
     // } else if ( key === 'c') {
     //clear();
 
     //}
+    beginShape();
+    for (let i = 0; i < array.length; i++) {
+      //--->basic drawing for (let i=0; i< array.length-1; i++){
+      //line (array [i][0], array[i][1], array[i+1][0], array[i+1][1]);<-----
+      curveVertex(array[i][0], array[i][1])
 
+    }
+    endShape();
   }
   return false;
 
@@ -55,12 +63,12 @@ function keyTyped() {
 
 function mousePressed() {
   array = [];
-  backgroundColor = 200;
+  backgroundColor = 255 ;
 }
 
 function drawGrid() {
 
-  let numCells = 20;
+  let numCells = 10;
   let startColor = color ("lightBlue");
   let endColor = color ("lightPink");
   let fillColor;
